@@ -1,11 +1,17 @@
 package BudgetApp;
+import java.util.ArrayList;
 
-public class HouseholdCreationMenu extends javax.swing.JFrame {
+public class HouseholdCreationMenu extends javax.swing.JFrame
+{
 
     /**
      * Creates new form HouseholdCreationMenu
      */
-    public HouseholdCreationMenu() {
+    
+    private static ArrayList <Household> householdList = new ArrayList <Household>();
+    
+    public HouseholdCreationMenu()
+    {
         initComponents();
     }
 
@@ -18,6 +24,9 @@ public class HouseholdCreationMenu extends javax.swing.JFrame {
         householdText = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         householdDisplayArea = new javax.swing.JTextArea();
+        createHouseholdButton = new javax.swing.JButton();
+        existingHouseholdLabel = new javax.swing.JLabel();
+        errorTextLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -35,22 +44,39 @@ public class HouseholdCreationMenu extends javax.swing.JFrame {
         householdDisplayArea.setRows(5);
         jScrollPane1.setViewportView(householdDisplayArea);
 
+        createHouseholdButton.setText("Create");
+        createHouseholdButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createHouseholdButtonActionPerformed(evt);
+            }
+        });
+
+        existingHouseholdLabel.setText("Existing Households:");
+
+        errorTextLabel.setText("");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(existingHouseholdLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(130, 130, 130))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(householdNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(39, 39, 39)
-                                .addComponent(householdText))
-                            .addComponent(householdPromptLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 22, Short.MAX_VALUE)))
+                        .addComponent(householdNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(householdText, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(createHouseholdButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(householdPromptLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 22, Short.MAX_VALUE))
+                    .addComponent(errorTextLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -61,18 +87,39 @@ public class HouseholdCreationMenu extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(householdNameLabel)
-                    .addComponent(householdText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+                    .addComponent(householdText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(createHouseholdButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addComponent(existingHouseholdLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
+                .addComponent(errorTextLabel)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void householdTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_householdTextActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_householdTextActionPerformed
+
+    private void createHouseholdButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createHouseholdButtonActionPerformed
+        String householdName = householdText.getText();
+        if(isDuplicate(householdName) == true)
+        {
+            errorTextLabel.setText("A household with that name already exists.");
+            return;
+        }
+        
+        Household newHousehold = new Household(householdName);
+        householdList.add(newHousehold);
+        householdDisplayArea.append(householdName);
+        
+        
+    }//GEN-LAST:event_createHouseholdButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -110,8 +157,21 @@ public class HouseholdCreationMenu extends javax.swing.JFrame {
             }
         });
     }
+    
+    	public boolean isDuplicate(String householdName) //checks all households in the arraylist to see if household with that name has already been created
+        {
+            for(int i = 0 ; i < HouseholdCreationMenu.householdList.size() ; i++)
+            {
+                if(householdName.compareTo(householdList.get(i).getHouseholdName()) == 0)
+                    return true;
+            }
+                return false;
+        }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton createHouseholdButton;
+    private javax.swing.JLabel errorTextLabel;
+    private javax.swing.JLabel existingHouseholdLabel;
     private javax.swing.JTextArea householdDisplayArea;
     private javax.swing.JLabel householdNameLabel;
     private javax.swing.JLabel householdPromptLabel;

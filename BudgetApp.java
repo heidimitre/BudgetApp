@@ -1,18 +1,39 @@
-
-
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 
 
-public class BudgetApp
+public class BudgetApp extends JPanel
 {
     public static ArrayList <Income> incomeList = new ArrayList <Income>();
     public static ArrayList <Asset> currentAsset = new ArrayList <Asset>();
     public static ArrayList <Expense> lumpSumExpense = new ArrayList <Expense>();
     public static ArrayList <Expense> monthlyExpense = new ArrayList <Expense>();
+    public static ArrayList <Household> householdList;
     
     public static void main (String [] args)
     {
-	Income jackIncome = new Income("Jack", 2000);
+        JFrame frame = new BudgetApp();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+    public BudgetApp()
+    {
+        setTitle("BudgetApp");
+        JTabbedPane MainPane = new JTabbedPane();
+        
+        //initialize HouseholdList
+        householdList = new ArrayList<Household>();
+
+        //Create Panels for tabs
+        JPanel HouseholdCreationPanel = new HouseholdCreationMenu();
+
+        MainPane.addTab("Household Creation", HouseholdCreationPanel );
+    
+    }
+        
+        
+        /*
+        Income jackIncome = new Income("Jack", 2000);
         Income jillIncome = new Income("Jill", 2500);
         
         incomeList.add(jackIncome);
@@ -44,9 +65,7 @@ public class BudgetApp
         System.out.println(smithHousehold.addAssets(smithHousehold.getAssetList()));
         System.out.println(smithHousehold.addLumpSumExpenses(smithHousehold.getLumpSumExpenseList()));
         System.out.println(smithHousehold.addFixedExpenses(smithHousehold.getFixedExpenseList()));
-
-
-    }
+        */
 
 }
  

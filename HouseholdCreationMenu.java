@@ -1,21 +1,19 @@
 package BudgetApp;
 import java.util.ArrayList;
+import javax.swing.JPanel;
 
-public class HouseholdCreationMenu extends javax.swing.JFrame
+public class HouseholdCreationMenu extends JPanel
 {
 
     /**
      * Creates new form HouseholdCreationMenu
      */
     
-    private static ArrayList <Household> householdList = new ArrayList <Household>();
-    
     public HouseholdCreationMenu()
     {
         initComponents();
     }
 
-    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -115,54 +113,17 @@ public class HouseholdCreationMenu extends javax.swing.JFrame
         }
         
         Household newHousehold = new Household(householdName);
-        householdList.add(newHousehold);
+        BudgetApp.householdList.add(newHousehold);
         householdDisplayArea.append(householdName);
         
         
     }//GEN-LAST:event_createHouseholdButtonActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[])
-    {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(HouseholdCreationMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(HouseholdCreationMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(HouseholdCreationMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(HouseholdCreationMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable()
-        {
-            public void run() {
-                new HouseholdCreationMenu().setVisible(true);
-            }
-        });
-    }
-    
+   
     	public boolean isDuplicate(String householdName) //checks all households in the arraylist to see if household with that name has already been created
         {
-            for(int i = 0 ; i < HouseholdCreationMenu.householdList.size() ; i++)
+            for(int i = 0 ; i < BudgetApp.householdList.size() ; i++)
             {
-                if(householdName.compareTo(householdList.get(i).getHouseholdName()) == 0)
+                if(householdName.compareTo(BudgetApp.householdList.get(i).getHouseholdName()) == 0)
                     return true;
             }
                 return false;

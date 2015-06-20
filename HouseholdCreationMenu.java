@@ -1,21 +1,25 @@
-package BudgetApp;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 
 public class HouseholdCreationMenu extends JPanel
 {
 
-    /**
-     * Creates new form HouseholdCreationMenu
-     */
-    
+    private javax.swing.JButton createHouseholdButton;
+    private javax.swing.JLabel errorTextLabel;
+    private javax.swing.JLabel existingHouseholdLabel;
+    private javax.swing.JTextArea householdDisplayArea;
+    private javax.swing.JLabel householdNameLabel;
+    private javax.swing.JLabel householdPromptLabel;
+    private javax.swing.JTextField householdText;
+    private javax.swing.JScrollPane jScrollPane1;
+	
     public HouseholdCreationMenu()
     {
         initComponents();
     }
 
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         householdPromptLabel = new javax.swing.JLabel();
         householdNameLabel = new javax.swing.JLabel();
@@ -26,25 +30,19 @@ public class HouseholdCreationMenu extends JPanel
         existingHouseholdLabel = new javax.swing.JLabel();
         errorTextLabel = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         householdPromptLabel.setText("Please enter a name for this household or scenario.");
 
         householdNameLabel.setText("Household name:");
-
-        householdText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                householdTextActionPerformed(evt);
-            }
-        });
 
         householdDisplayArea.setColumns(20);
         householdDisplayArea.setRows(5);
         jScrollPane1.setViewportView(householdDisplayArea);
 
         createHouseholdButton.setText("Create");
-        createHouseholdButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        createHouseholdButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 createHouseholdButtonActionPerformed(evt);
             }
         });
@@ -53,8 +51,8 @@ public class HouseholdCreationMenu extends JPanel
 
         errorTextLabel.setText("");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -96,13 +94,9 @@ public class HouseholdCreationMenu extends JPanel
                 .addContainerGap())
         );
 
-        pack();
-    }// </editor-fold>//GEN-END:initComponents
+        //pack();
+    }
 
-    
-    private void householdTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_householdTextActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_householdTextActionPerformed
 
     private void createHouseholdButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createHouseholdButtonActionPerformed
         String householdName = householdText.getText();
@@ -129,14 +123,4 @@ public class HouseholdCreationMenu extends JPanel
                 return false;
         }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton createHouseholdButton;
-    private javax.swing.JLabel errorTextLabel;
-    private javax.swing.JLabel existingHouseholdLabel;
-    private javax.swing.JTextArea householdDisplayArea;
-    private javax.swing.JLabel householdNameLabel;
-    private javax.swing.JLabel householdPromptLabel;
-    private javax.swing.JTextField householdText;
-    private javax.swing.JScrollPane jScrollPane1;
-    // End of variables declaration//GEN-END:variables
 }

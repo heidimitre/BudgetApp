@@ -3,7 +3,7 @@ import java.awt.*;
 import java.util.ArrayList;
 
 
-public class BudgetApp extends JPanel
+public class BudgetApp extends JFrame
 {
     public static ArrayList <Income> incomeList = new ArrayList <Income>();
     public static ArrayList <Asset> currentAsset = new ArrayList <Asset>();
@@ -15,6 +15,8 @@ public class BudgetApp extends JPanel
     {
         JFrame frame = new BudgetApp();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+        //frame.setSize(800,700);
     }
     public BudgetApp()
     {

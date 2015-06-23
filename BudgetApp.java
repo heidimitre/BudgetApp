@@ -16,7 +16,7 @@ public class BudgetApp extends JFrame
         JFrame frame = new BudgetApp();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
-        //frame.setSize(800,700);
+        frame.setSize(800,700);
     }
     public BudgetApp()
     {
@@ -33,7 +33,12 @@ public class BudgetApp extends JFrame
     
     }
         
-        
+    /*
+    TO-DO:    
+    
+    ADD UPDATE METHOD
+    */
+    
         /*
         Income jackIncome = new Income("Jack", 2000);
         Income jillIncome = new Income("Jill", 2500);

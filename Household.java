@@ -1,3 +1,17 @@
+/*
+ * A Household object is a manager class which includes all of the Asset, Expense and Income objects for a particular household.
+ * 
+ * Each Household object contains 4 ArrayLists of objects related to the household:
+ * 1) an ArrayList with all Income objects (incomeSource)
+ * 2) an ArrayList with all Asset objects (assetList)
+ * 3) an ArrayList with all Fixed Expense objects (fixedExpense)
+ * 4) an ArrayList with all Lump-Sum Expense objects (oneTimeExpense)
+ * 
+ * In addition to the accessor and mutator methods, the Household class contains
+ * methods that add all objects in a particular ArrayList and returns a total value
+ * for all objects of that type.
+ */
+
 
 import java.util.ArrayList;
 

@@ -1,3 +1,7 @@
+/*
+ * This class contains methods relating to Income objects.
+ * Examples of Income objects belonging to a household include salaries, passive/rental income and dividends/interest earnings.
+ */
 
 public class Income
 {

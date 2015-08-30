@@ -1,3 +1,10 @@
+/*
+ * This class contains methods relating to Expense objects.
+ * Expense objects can be one of two types: Fixed (isFixed = true) or Lump-Sum (isFixed = false).
+ * Examples of Fixed Expense objects include rent expense, phone bill or groceries.
+ * Examples of Lump-Sum Expense objects include vacation expenses, gifts, etc.
+ */
+
 
 public class Expense
 {

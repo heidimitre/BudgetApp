@@ -1,3 +1,7 @@
+/*
+ * This class contains methods relating to Asset objects.
+ * Examples of Asset objects belonging to a household include bank accounts, retirement accounts and cash.
+ */
 
 public class Asset
 {
